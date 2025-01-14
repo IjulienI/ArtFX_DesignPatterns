@@ -139,6 +139,7 @@
     <ClCompile Include="GameLogic\GameManager.cpp" />
     <ClCompile Include="Inputs\Controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Render\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug\Log.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="EventDispatcher\RecipeChecker.h" />
     <ClInclude Include="GameLogic\GameManager.h" />
     <ClInclude Include="Inputs\Controller.h" />
+    <ClInclude Include="Render\Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

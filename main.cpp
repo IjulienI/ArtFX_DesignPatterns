@@ -4,41 +4,26 @@
 #include <string>
 #include "Inputs/Controller.h"
 #include "Debug/Log.h"
+#include "Render/Renderer.h"
 
 int main()
 {    
     Controller* controller = new Controller();
     GameManager* gameManager = new GameManager();
+    Renderer* renderer = new Renderer();
 
     gameManager->playerInputs = controller->GetInputQueueRef();
     controller->BindEnterEvent(gameManager);
-    controller->SetIngredientsAmount(gameManager->GetIngredientsAmountRef());
-
-    InitWindow(800, 600, "Spooky Restaurant!");
-    SetTargetFPS(16);
+    controller->SetIngredientsAmount(gameManager->GetIngredientsAmountRef());  
 
     //Generate Recipe
     gameManager->GenerateMeal();
 
     //GameLoop
-    while (!WindowShouldClose()) {         
-        BeginDrawing();  
-        
-        //GameSequence
-        while (gameManager->GetInvalidMeal())
-        {
-            BeginDrawing();
-            
-            controller->HandleInputs();
-            
-            ClearBackground(BLACK);
-        
-            EndDrawing();
-        }
-
-        ClearBackground(BLACK);
-        
-        EndDrawing();
+    while (!WindowShouldClose()) {                 
+        controller->HandleInputs();
+        renderer->Update();
+        renderer->Render();
     }
 
     CloseWindow();
